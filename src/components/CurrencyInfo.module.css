@@ -1,0 +1,59 @@
+.coin-info-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "segoe ui", Roboto, Helvetica, Arial, sans-serif;
+    align-items: center;
+}
+
+.coin-market-info {
+    background-color: #123dec;
+}
+
+.coin-info-header {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.img {
+    border-radius: 50%;
+}
+
+.coin-name {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.tags {
+    background-color: #d6d8da;
+    padding: 2px 10px;
+    border-radius: 6px;
+    font-size: 1em;
+    font-weight: 500;
+}
+
+.price-header {
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.price-info {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.price {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.change{
+    background-color: red;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 5px 10px;
+    color: white;
+}
