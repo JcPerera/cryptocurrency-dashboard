@@ -8,11 +8,16 @@ export const useAxios = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const fetchData = useCallback(async (params) => {
+  const fetchData = useCallback(async (params, updateResponse) => {
     try {
       setLoading(true);
       const result = await axios.request(params);
-      setResponse(result.data);
+      if(updateResponse){
+        let updatedResponse = updateResponse(result.data)
+        setResponse(updatedResponse);
+      }else{
+        setResponse(result.data);
+      }
     } catch (error) {
       setError(error);
     } finally {
