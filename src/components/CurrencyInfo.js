@@ -1,11 +1,12 @@
 import React, {useEffect} from "react";
 import {useParams} from "react-router-dom";
+import {CaretDownOutlined, CaretUpOutlined} from '@ant-design/icons';
 
 import {useAxios} from "../hooks/useAxios";
 import Container from "./Container";
 import classes from "./CurrencyInfo.module.css";
 
-const CurrencyInfo = (props) => {
+const CurrencyInfo = () => {
     const params = useParams();
     const [response, , , fetchData] = useAxios();
 
@@ -15,6 +16,14 @@ const CurrencyInfo = (props) => {
             url: `/coins/${params.currencyId}`,
         });
     }, [fetchData, params]);
+
+    let isNegative = false;
+
+    if (response) {
+        if (response.market_data.price_change_percentage_24h < 0) {
+            isNegative = true;
+        }
+    }
 
     return (
         response && (
@@ -32,10 +41,11 @@ const CurrencyInfo = (props) => {
                     </div>
                     <div className={classes['price-info']}>
                         <div className={classes.price}>
-                            A$34234.00
+                            A${response.market_data.current_price.aud}
                         </div>
                         <div className={classes.change}>
-                            5.56%
+                            {isNegative ? <CaretDownOutlined/> :
+                                <CaretUpOutlined/>} {response.market_data.price_change_percentage_24h.toFixed(2)}%
                         </div>
                     </div>
                 </div>
