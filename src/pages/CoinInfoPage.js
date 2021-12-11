@@ -20,9 +20,9 @@ const CoinInfoPage = () => {
 
     const loadingSpinner = <Container><LoadingOutlined style={{fontSize: 40}} spin/></Container>;
     const errorBanner = error && <Container><Alert message="Error"
-                                                    description={error.data.error}
-                                                    type="error"
-                                                    showIcon/> </Container>
+                                                   description={error.data.error}
+                                                   type="error"
+                                                   showIcon/> </Container>
 
     return (error ? errorBanner : loading ? loadingSpinner : response && <Container>
             <CurrencyInfo img={response.image.small}
@@ -32,7 +32,10 @@ const CoinInfoPage = () => {
                           price={response.market_data.current_price.aud}
                           priceChange={response.market_data.price_change_percentage_24h}
                           webUrl={response.links.homepage[0]}
-                          gitUrl={response.links.repos_url.github[0]}/>
+                          gitUrl={response.links.repos_url.github[0]}
+                          fbUrl={response.links.facebook_username}
+                          twitterUrl={response.links.twitter_screen_name}
+            />
         </Container>
     )
 

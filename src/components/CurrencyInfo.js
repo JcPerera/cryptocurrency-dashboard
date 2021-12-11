@@ -1,8 +1,15 @@
-import {CaretDownOutlined, CaretUpOutlined, LinkOutlined, GithubOutlined} from '@ant-design/icons';
+import {
+    CaretDownOutlined,
+    CaretUpOutlined,
+    LinkOutlined,
+    GithubOutlined,
+    FacebookFilled,
+    TwitterSquareFilled
+} from '@ant-design/icons';
 import classes from "./CurrencyInfo.module.css";
 
 const CurrencyInfo = (props) => {
-    const {img, symbol, id, rank, price, priceChange, webUrl, gitUrl} = props
+    const {img, symbol, id, rank, price, priceChange, webUrl, gitUrl, fbUrl, twitterUrl} = props
 
     let isNegative = false;
     if (priceChange) {
@@ -35,9 +42,17 @@ const CurrencyInfo = (props) => {
             {webUrl && <div className={classes.tags}>
                 <LinkOutlined/> <a href={webUrl}>Official Website</a>
             </div>}
-            {gitUrl && <div className={classes.tags}>
-                <GithubOutlined/> <a href={gitUrl}>Source code</a>
-            </div>}
+            <div className={classes.socials}>
+                {gitUrl && <div className={classes.tags}>
+                    <GithubOutlined/> <a href={gitUrl}>Source code</a>
+                </div>}
+                {fbUrl && <div className={classes.tags}>
+                    <FacebookFilled/> <a href={"https://www.facebook.com/".concat(fbUrl)}>Facebook</a>
+                </div>}
+                {twitterUrl && <div className={classes.tags}>
+                    <TwitterSquareFilled/> <a href={"https://twitter.com/".concat(twitterUrl)}>Twitter</a>
+                </div>}
+            </div>
         </div>
     );
 };
