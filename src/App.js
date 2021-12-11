@@ -1,8 +1,8 @@
 import { Route, Redirect } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
-import Trending from "./pages/Trending";
+import HomePage from "./pages/HomePage";
+import TrendingPage from "./pages/TrendingPage";
 
 function App() {
   return (
@@ -13,10 +13,10 @@ function App() {
           <Redirect to="/home"/>
          </Route>
         <Route path="/home">
-          <Home />
+          <HomePage />
         </Route>
         <Route path="/trending">
-          <Trending />
+          <TrendingPage />
         </Route>
       </main>
     </div>

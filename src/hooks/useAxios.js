@@ -19,7 +19,7 @@ export const useAxios = () => {
         setResponse(result.data);
       }
     } catch (error) {
-      setError(error);
+      setError(error.response);
     } finally {
       setLoading(false);
     }

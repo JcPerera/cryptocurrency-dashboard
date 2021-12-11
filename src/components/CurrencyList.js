@@ -1,10 +1,10 @@
 import {useHistory} from "react-router-dom";
-import {Table} from "antd";
+import {Alert, Table} from "antd";
 import Container from "../components/Container";
 
 const CurrencyList = (props) => {
     const history = useHistory();
-    const {response} = props
+    const {response, loading, error} = props
     const columns = [
         {
             title: "Id",
@@ -28,24 +28,27 @@ const CurrencyList = (props) => {
         },
     ];
 
+    const errorBanner = error && <Container><Alert message="Error"
+                                                   description={error.data.error}
+                                                   type="error"
+                                                   showIcon/> </Container>
+
     return (
-        <div>
-            <Container>
-                <Table
-                    onRow={(record) => {
-                        return {
-                            onClick: () => {
-                                history.push(`/home/currency/${record.id}`);
-                            }, // click row
-                        };
-                    }}
-                    columns={columns}
-                    dataSource={response}
-                    pagination={{defaultPageSize: 10}}
-                    loading={props.loading}
-                />
-            </Container>
-        </div>
+        error ? errorBanner : <Container>
+            <Table
+                onRow={(record) => {
+                    return {
+                        onClick: () => {
+                            history.push(`/home/${record.id}`);
+                        }, // click row
+                    };
+                }}
+                columns={columns}
+                dataSource={response}
+                pagination={{defaultPageSize: 10}}
+                loading={loading}
+            />
+        </Container>
     );
 };
 

@@ -1,7 +1,7 @@
 import Container from "../components/Container";
 
-const Trending = () => {
+const TrendingPage = () => {
   return <div><Container>Trending</Container></div>;
 };
 
-export default Trending;
+export default TrendingPage;
