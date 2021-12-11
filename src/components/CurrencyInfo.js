@@ -5,12 +5,11 @@ const CurrencyInfo = (props) => {
     const {img, symbol, id, rank, price, priceChange, webUrl, gitUrl} = props
 
     let isNegative = false;
-    if (price) {
-        if (price < 0) {
+    if (priceChange) {
+        if (priceChange < 0) {
             isNegative = true;
         }
     }
-
     return (
         <div className={classes['coin-info-wrapper']}>
             <div className={classes['coin-info-header']}>
@@ -29,18 +28,16 @@ const CurrencyInfo = (props) => {
                 </div>
                 {priceChange &&
                     <div className={!isNegative ? classes.green : classes.change}>
-
                         {isNegative ? <CaretDownOutlined/> :
                             <CaretUpOutlined/>} {priceChange.toFixed(2)}%
-
                     </div>}
             </div>
-            <div className={classes.tags}>
+            {webUrl && <div className={classes.tags}>
                 <LinkOutlined/> <a href={webUrl}>Official Website</a>
-            </div>
-            <div className={classes.tags}>
+            </div>}
+            {gitUrl && <div className={classes.tags}>
                 <GithubOutlined/> <a href={gitUrl}>Source code</a>
-            </div>
+            </div>}
         </div>
     );
 };
